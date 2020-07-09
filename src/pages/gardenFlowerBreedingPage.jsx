@@ -25,6 +25,14 @@ import orangeTulip from '../img/TO.png';
 import blackTulip from '../img/TK.png';
 import purpleTulip from '../img/TU.png';
 
+import whiteHyacinth from '../img/HW.png';
+
+import whiteCosmo from '../img/CW.png';
+
+import whitePansy from '../img/PW.png';
+
+import whiteWindflower from '../img/WW.png';
+
 import equalsSign from '../img/noun_Equal_1887594.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,14 +54,9 @@ const useStyles = makeStyles((theme) => ({
   accordionTypography: {
     width: '100%'
   },
-  flowerEquation: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '140px',
-  },
   flowerIcon: {
-    width: 22,
-    height: 22,
+    width: 52,
+    height: 52,
     marginTop: 2,
     marginRight: 5,
   },
@@ -63,10 +66,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 5,
   },
   flowerCircle: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    display: 'inline-block'
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    display: 'inline-block',
+    margin: 5
   },
   flowerEquals: {
     width: 12,
@@ -80,6 +84,43 @@ const useStyles = makeStyles((theme) => ({
   body: {
     width: '100%',
     fontSize: theme.typography.pxToRem(19),
+  },
+  table: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '800px',
+    tableLayout: 'fixed',
+    textAlign: 'center',
+    itemAlign: 'center',
+
+    borderCollapse: 'collapse',
+    // border: '2px solid rgba(255,255,255,0.7)',
+    // borderRadius: '14px',
+    boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+    padding: 0,
+
+    lineHeight: 0,
+
+    '& tr:not(:last-child)': {
+      borderBottom: '2px solid rgba(255,255,255,0.5)',
+    },
+    '& td': {
+      padding: 10,
+    },
+
+    // '& td:first-child': {
+    //   borderRight: '2px solid rgba(255,255,255,0.5)'
+    // },
+
+    // '& td:last-child': {
+    //   borderLeft: '2px solid rgba(255,255,255,0.5)'
+    // },
+
+
+    '& td:nth-child(2)': {
+      borderLeft: '2px solid rgba(255,255,255,0.5)',
+      borderRight: '2px solid rgba(255,255,255,0.5)',
+    },
   }
 }));
 
@@ -87,21 +128,25 @@ export default function GardenFlowerBreedingPage() {
   const classes = useStyles();
 
   const [rootExpanded, setRootExpanded] = React.useState(true);
-  const [tulipsExpanded, setTulipsExpanded] = React.useState(true);
-  const [liliesExpanded, setLiliesExpanded] = React.useState(true);
+  const [tulipsExpanded, setTulipsExpanded] = React.useState(false);
+  const [liliesExpanded, setLiliesExpanded] = React.useState(false);
+  const [hyacinthsExpanded, setHyacinthsExpanded] = React.useState(false);
+  const [cosmosExpanded, setCosmosExpanded] = React.useState(false);
+  const [pansysExpanded, setPansysExpanded] = React.useState(false);
+  const [windflowersExpanded, setWindflowersExpanded] = React.useState(false);
 
   const generateAccordionCell = (item) => {
     return (
-      <div className={classes.flowerEquation}>
-        <div className={classes.flowerCircle} style={{background: item.left.color}}/> 
-        <span style={{margin: 5}}>
-          <AddIcon/>
-        </span>
-        <div className={classes.flowerCircle} style={{background: item.right.color}}/> 
-        <span style={{margin: 10}}>
-          <img src={equalsSign} className={classes.flowerEquals} />
-        </span>
+      <tr>
+        <td>
+          <img className={classes.flowerIcon} src={item.left.image} />
+        </td>
 
+        <td>
+          <img className={classes.flowerIcon} src={item.right.image} />
+        </td>
+
+        <td>
         {
           item.result.map((r, i) => {
             return (
@@ -111,8 +156,8 @@ export default function GardenFlowerBreedingPage() {
             );
           })
         }
-
-      </div>
+        </td>
+      </tr>
     );
   }
 
@@ -135,85 +180,120 @@ export default function GardenFlowerBreedingPage() {
       percent: '50%'
     }]
   },
-  // {
-  //   imageOne: yellowTulip,
-  //   textOne: 'Yellow',
-  //   imageTwo: redTulip,
-  //   textTwo: 'Red',
-  //   result: [{
-  //     image: orangeTulip,
-  //     text: 'Orange',
-  //     percent: '50%'
-  //   }]
-  // },
-  // {
-  //   imageOne: redTulip,
-  //   textOne: 'Red',
-  //   imageTwo: redTulip,
-  //   textTwo: 'Red',
-  //   result: [{
-  //     image: blackTulip,
-  //     text: 'Black',
-  //     percent: '25%'
-  //   }]
-  // },
-  // {
-  //   imageOne: orangeTulip,
-  //   textOne: 'Orange',
-  //   imageTwo: orangeTulip,
-  //   textTwo: 'Orange',
-  //   result: [{
-  //     image: orangeTulip,
-  //     text: 'Orange',
-  //     percent: '25%'
-  //   },
-  //   {
-  //     image: orangeTulip,
-  //     text: 'Orange (Nook Mile)',
-  //     percent: '12.5%'
-  //   },
-  //   {
-  //     image: blackTulip,
-  //     text: 'Black',
-  //     percent: '6.25%'
-  //   },
-  //   {
-  //     image: blackTulip,
-  //     text: 'Black (Nook Mile)',
-  //     percent: '12.5%'
-  //   },
-  //   {
-  //     image: purpleTulip,
-  //     text: 'Purple',
-  //     percent: '6.25%'
-  //   }]
-  // },
-  //   {
-  //   imageOne: orangeTulip,
-  //   textOne: 'Orange',
-  //   imageTwo: orangeTulip,
-  //   textTwo: 'Orange',
-  //   result: [{
-  //     image: orangeTulip,
-  //     text: 'Orange',
-  //     percent: '25%'
-  //   },
-  //   {
-  //     image: orangeTulip,
-  //     text: 'Orange (Nook Mile)',
-  //     percent: '25%'
-  //   },
-  //   {
-  //     image: blackTulip,
-  //     text: 'Black (Nook Mile)',
-  //     percent: '12.5%'
-  //   },
-  //   {
-  //     image: purpleTulip,
-  //     text: 'Purple',
-  //     percent: '12.5%'
-  //   }]
-  // },
+  {
+    left: {
+      image: yellowTulip,
+      text: 'yellow',
+      color: 'yellow',
+    },
+    right: {
+      image: redTulip,
+      text: 'red',
+      color: 'red',
+    },
+    result: [{
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange',
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: redTulip,
+      text: 'red',
+      color: 'red',
+    },
+    right: {
+      image: redTulip,
+      text: 'red',
+      color: 'red',
+    },
+    result: [{
+      image: blackTulip,
+      text: 'black',
+      color: 'black',
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange',
+    },
+    right: {
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange',
+    },
+    result: [{
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange',
+      percent: '25%'
+    },
+    {
+      image: orangeTulip,
+      text: 'Orange (Nook Mile)',
+      color: 'orange',
+      percent: '12.5%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black',
+      color: 'black',
+      percent: '6.25%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black (Nook Mile)',
+      color: 'black',
+      percent: '12.5%'
+    },
+    {
+      image: purpleTulip,
+      text: 'purple',
+      color: 'purple',
+      percent: '6.25%'
+    }]
+  },
+  {
+    left: {
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange',
+    },
+    right: {
+      image: orangeTulip,
+      text: 'orange',
+      color: 'orange'
+    },
+    result: [{
+      image: orangeTulip,
+      text: 'Orange',
+      color: 'orange',
+      percent: '25%'
+    },
+    {
+      image: orangeTulip,
+      text: 'Orange (Nook Mile)',
+      color: 'orange',
+      percent: '25%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black (Nook Mile)',
+      color: 'black',
+      percent: '12.5%'
+    },
+    {
+      image: purpleTulip,
+      text: 'Purple',
+      color: 'purple',
+      percent: '12.5%'
+    }]
+  },
   ];
 
   const tulipSection = (
@@ -225,14 +305,21 @@ export default function GardenFlowerBreedingPage() {
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
       >
-        <Typography className={classes.heading}>Tulips</Typography>
+        <Typography className={classes.heading}>
+          <div>
+            <img src={whiteTulip} width="30" height="30" />
+          </div>
+          Tulips
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
           
-          { tulipSectionItems.map(i => generateAccordionCell(i)) }
+        <table className={classes.table}>
+          <tbody>
+            { tulipSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
 
-        </Typography>
       </AccordionDetails>
     </Accordion>
   );
@@ -246,7 +333,12 @@ export default function GardenFlowerBreedingPage() {
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
       >
-        <Typography className={classes.heading}>Lilies</Typography>
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteLily} width="30" height="30" />
+        </div>
+        Lilies
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography className={classes.body}>
@@ -258,7 +350,112 @@ export default function GardenFlowerBreedingPage() {
     </Accordion>
   );
 
-  const flowerBreedingAccordionSections = [tulipSection];
+  const hyacinthSection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={hyacinthsExpanded}
+      onChange={() => setHyacinthsExpanded(!hyacinthsExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteHyacinth} width="30" height="30" />
+        </div>
+        Hyacinths
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
+
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+
+   const cosmoSection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={cosmosExpanded}
+      onChange={() => setCosmosExpanded(!cosmosExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteCosmo} width="30" height="30" />
+        </div>
+        Cosmos
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
+
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+
+  const pansySection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={pansysExpanded}
+      onChange={() => setPansysExpanded(!pansysExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whitePansy} width="30" height="30" />
+        </div>
+        Pansys
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
+
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+
+  const windflowerSection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={windflowersExpanded}
+      onChange={() => setWindflowersExpanded(!windflowersExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteWindflower} width="30" height="30" />
+        </div>
+        Windflowers
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
+
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+
+
+  const flowerBreedingAccordionSections = [tulipSection, lilySection, hyacinthSection, cosmoSection, pansySection, windflowerSection];
 
   const flowerBreedingAccordion = (
     <div>
