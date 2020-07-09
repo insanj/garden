@@ -20,6 +20,7 @@ export default function GardenFooter() {
 
   return (
     <footer className={classes.footer}>
+      by using this site you are agreeing<br/>to the use of 1 cookie: to save ur<br/>dark mode preference. thanks!<br/>
       v{ gitTagVersionString } ({ compileDateString })
       <br/>
       &copy; 2020 <a href="http://github.com/insanj" style={{color: 'inherit'}}>julian (insanj) weiss</a>

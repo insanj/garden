@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { PieChart } from 'react-minimal-pie-chart';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 import AddIcon from '@material-ui/icons/Add';
 
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     fontWeight: 600,
     lineHeight: 1.1,
-    color: '#fff'
+    color: theme.palette.primary.contrastText
   },
   headingAuthor: {
     fontSize: theme.typography.pxToRem(15),
@@ -117,9 +118,13 @@ const useStyles = makeStyles((theme) => ({
     height: 12,
     marginBottom: 6,
   },
+  rootAccordion: {
+    background: theme.palette.secondary.main, 
+    boxShadow: '0px 2px 2px rgba(0,0,0,0.2)'
+  },
   accordion: {
-    background: 'rgba(50,50,50,1)',
-    color: "#fff"
+    background: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText
   },
   body: {
     width: '100%',
@@ -141,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 0,
 
     '& tr:not(:last-child)': {
-      borderBottom: '2px solid rgba(255,255,255,0.5)',
+      borderBottom: `2px solid ${theme.palette.secondary.contrastText}`,
     },
     '& td': {
       padding: 10,
@@ -157,13 +162,13 @@ const useStyles = makeStyles((theme) => ({
 
 
     '& td:nth-child(2)': {
-      borderLeft: '2px solid rgba(255,255,255,0.5)',
-      borderRight: '2px solid rgba(255,255,255,0.5)',
+      borderLeft: `2px solid ${theme.palette.secondary.contrastText}`,
+      borderRight: `2px solid ${theme.palette.secondary.contrastText}`,
     },
   }
 }));
 
-export default function GardenFlowerBreedingPage() {
+export default function GardenFlowerBreedingPage({ onDarkModeToggle }) {
   const classes = useStyles();
 
   const [rootExpanded, setRootExpanded] = React.useState(true);
@@ -1188,12 +1193,12 @@ export default function GardenFlowerBreedingPage() {
 
   const rootAccordion = (
     <Accordion
-      style={{background: 'rgba(0,0,0,0.3)', borderRadius: 20, boxShadow: '0px 2px 2px rgba(0,0,0,0.2)'}}
-      expanded={rootExpanded}
-      onChange={() => setRootExpanded(!rootExpanded)}
+      className={ classes.rootAccordion }
+      expanded={true}
+      onChange={ onDarkModeToggle }
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
+        expandIcon={<Brightness4Icon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
