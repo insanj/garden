@@ -7,12 +7,21 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import book from '../img/Book.png';
+
 import whiteLily from '../img/LW.png';
 import redLily from '../img/LR.png';
 import pinkLily from '../img/LP.png';
 import yellowLily from '../img/LY.png';
 import orangeLily from '../img/LO.png';
 import blackLily from '../img/LK.png';
+
+import whiteTulip from '../img/TW.png';
+import redTulip from '../img/TR.png';
+import pinkTulip from '../img/TP.png';
+import yellowTulip from '../img/TY.png';
+import orangeTulip from '../img/TO.png';
+import blackTulip from '../img/TK.png';
+import purpleTulip from '../img/TU.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,8 +42,15 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   flowerIcon: {
-    width: 18,
-    height: 18,
+    width: 22,
+    height: 22,
+    marginTop: 2,
+    marginRight: 5,
+  },
+  flowerPercent: {
+    opacity: 0.6,
+    marginLeft: 5,
+    marginRight: 5,
   },
   body: {
     fontSize: theme.typography.pxToRem(19),
@@ -48,6 +64,126 @@ export default function GardenFlowerBreedingPage() {
   const [tulipsExpanded, setTulipsExpanded] = React.useState(true);
   const [liliesExpanded, setLiliesExpanded] = React.useState(true);
 
+  const generateAccordionCell = (item) => {
+    return (
+      <div>
+        <img src={ item.imageOne } className={classes.flowerIcon} /> 
+        <span style={{margin: 5}}>+</span>
+        <img src={ item.imageTwo } className={classes.flowerIcon} /> 
+        <span style={{margin: 5}}>=</span>
+
+        {
+          item.result.map((r, i) => {
+            return (
+              <span>
+                <img src={ r.image } className={classes.flowerIcon} /> 
+
+                <sup><span className={classes.flowerPercent}>
+                  {r.percent}
+                </span></sup>
+
+                { i < item.result.length-1 ? 'or' : ''}
+              </span>
+            );
+          })
+        }
+
+      </div>
+    );
+  }
+
+  const tulipSectionItems = [
+  {
+    imageOne: whiteTulip,
+    textOne: 'White',
+    imageTwo: redTulip,
+    textTwo: 'Red',
+    result: [{
+      image: pinkTulip,
+      text: 'Pink',
+      percent: '50%'
+    }]
+  },
+  {
+    imageOne: yellowTulip,
+    textOne: 'Yellow',
+    imageTwo: redTulip,
+    textTwo: 'Red',
+    result: [{
+      image: orangeTulip,
+      text: 'Orange',
+      percent: '50%'
+    }]
+  },
+  {
+    imageOne: redTulip,
+    textOne: 'Red',
+    imageTwo: redTulip,
+    textTwo: 'Red',
+    result: [{
+      image: blackTulip,
+      text: 'Black',
+      percent: '25%'
+    }]
+  },
+  {
+    imageOne: orangeTulip,
+    textOne: 'Orange',
+    imageTwo: orangeTulip,
+    textTwo: 'Orange',
+    result: [{
+      image: orangeTulip,
+      text: 'Orange',
+      percent: '25%'
+    },
+    {
+      image: orangeTulip,
+      text: 'Orange (Nook Mile)',
+      percent: '12.5%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black',
+      percent: '6.25%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black (Nook Mile)',
+      percent: '12.5%'
+    },
+    {
+      image: purpleTulip,
+      text: 'Purple',
+      percent: '6.25%'
+    }]
+  },
+    {
+    imageOne: orangeTulip,
+    textOne: 'Orange',
+    imageTwo: orangeTulip,
+    textTwo: 'Orange',
+    result: [{
+      image: orangeTulip,
+      text: 'Orange',
+      percent: '25%'
+    },
+    {
+      image: orangeTulip,
+      text: 'Orange (Nook Mile)',
+      percent: '25%'
+    },
+    {
+      image: blackTulip,
+      text: 'Black (Nook Mile)',
+      percent: '12.5%'
+    },
+    {
+      image: purpleTulip,
+      text: 'Purple',
+      percent: '12.5%'
+    }]
+  },
+  ];
 
   const tulipSection = (
     <Accordion
@@ -60,9 +196,9 @@ export default function GardenFlowerBreedingPage() {
         <Typography className={classes.heading}>Tulips</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
+        <Typography className={classes.body}>
           
-          Hello
+          { tulipSectionItems.map(i => generateAccordionCell(i)) }
 
         </Typography>
       </AccordionDetails>
@@ -89,7 +225,11 @@ export default function GardenFlowerBreedingPage() {
             Red 
             = 
             <img src={ pinkLily } className={classes.flowerIcon} /> 
-            Pink (50%)
+            Pink 
+
+            <sup><span className={classes.flowerPercent}>
+              50%
+            </span></sup>
           </div>
           
           <div>
@@ -99,7 +239,10 @@ export default function GardenFlowerBreedingPage() {
             Red 
             = 
             <img src={ orangeLily } className={classes.flowerIcon} /> 
-            Orange (50%)
+            Orange 
+            <sup><span className={classes.flowerPercent}>
+              50%
+            </span></sup>
           </div>
 
           <div>
@@ -109,12 +252,19 @@ export default function GardenFlowerBreedingPage() {
             Red 
             = 
             <img src={ blackLily } className={classes.flowerIcon} /> 
-            Black (25%)
+            Black
+            <sup><span className={classes.flowerPercent}>
+              25%
+            </span></sup>
 
             or 
 
             <img src={ pinkLily } className={classes.flowerIcon} /> 
-            Pink (25%)
+            Pink 
+
+            <sup><span className={classes.flowerPercent}>
+              25%
+            </span></sup>
           </div>
         </Typography>
       </AccordionDetails>

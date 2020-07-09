@@ -17,10 +17,10 @@ build: env
 	npm run build
 	rm -r -f docs
 	mv build docs
-	echo "$(PUBLIC_URL)" > docs/CNAME
+# 	echo "$(PUBLIC_URL)" > docs/CNAME
 
 .PHONY: env
 env: export REACT_APP_GARDEN_TAG=$(TAG)
 env:
 	@echo "REACT_APP_GARDEN_TAG=$(shell echo $(REACT_APP_GARDEN_TAG))" > .env
-	@echo "Wrote REACT_APP_LEAF_TAG to .env with the given version: $(shell echo $(REACT_APP_GARDEN_TAG))"
+	@echo "Wrote REACT_APP_GARDEN_TAG to .env with the given version: $(shell echo $(REACT_APP_GARDEN_TAG))"
