@@ -10,7 +10,7 @@ import GardenFooter from './components/gardenFooter';
 const useStyles = makeStyles({
   root: {
     margin: 0,
-    padding: 50,
+    padding: 10,
   }
 });
 

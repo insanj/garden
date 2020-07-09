@@ -88,7 +88,6 @@ const useStyles = makeStyles((theme) => ({
   table: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: '800px',
     tableLayout: 'fixed',
     textAlign: 'center',
     itemAlign: 'center',
