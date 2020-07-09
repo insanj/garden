@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 export default function GardenFooter() {
   const classes = useStyles();
   let compileDateString = preval`module.exports = new Date().toLocaleString("en").toLowerCase();`;
-  let gitTagVersionString = process.env.REACT_APP_GARDEn_TAG;
+  let gitTagVersionString = process.env.REACT_APP_GARDEN_TAG;
 
   return (
     <footer className={classes.footer}>
