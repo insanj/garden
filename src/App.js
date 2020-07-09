@@ -1,11 +1,20 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme, createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 // import logo from './img/logo.svg';
 // import './css/app.css';
 
 import GardenFlowerBreedingPage from './pages/gardenFlowerBreedingPage';
 import GardenFooter from './components/gardenFooter';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+  typography: {
+    fontFamily: ['Cabin'].join(','),
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -19,8 +28,10 @@ export default function App() {
 
   return (
     <div className={ classes.root }>
-      <GardenFlowerBreedingPage />
-      <GardenFooter />
+      <ThemeProvider theme={theme}>
+        <GardenFlowerBreedingPage />
+        <GardenFooter />
+      </ThemeProvider>
     </div>
   );
 }

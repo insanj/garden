@@ -12,6 +12,7 @@
     "preval.macro": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {

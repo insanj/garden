@@ -4,6 +4,8 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import { PieChart } from 'react-minimal-pie-chart';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -26,12 +28,22 @@ import blackTulip from '../img/TK.png';
 import purpleTulip from '../img/TU.png';
 
 import whiteHyacinth from '../img/HW.png';
+import redHyacinth from '../img/HR.png';
+import blueHyacinth from '../img/HB.png';
+import pinkHyacinth from '../img/HP.png';
+import orangeHyacinth from '../img/HO.png';
+import purpleHyacinth from '../img/HU.png';
+import yellowHyacinth from '../img/HY.png';
 
 import whiteCosmo from '../img/CW.png';
 
 import whitePansy from '../img/PW.png';
 
 import whiteWindflower from '../img/WW.png';
+
+import whiteMum from '../img/MW.png';
+
+import whiteRose from '../img/RW.png';
 
 import equalsSign from '../img/noun_Equal_1887594.svg';
 
@@ -55,8 +67,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   flowerIcon: {
-    width: 52,
-    height: 52,
+    width: 60,
+    height: 60,
     marginTop: 2,
     marginRight: 5,
   },
@@ -133,6 +145,8 @@ export default function GardenFlowerBreedingPage() {
   const [cosmosExpanded, setCosmosExpanded] = React.useState(false);
   const [pansysExpanded, setPansysExpanded] = React.useState(false);
   const [windflowersExpanded, setWindflowersExpanded] = React.useState(false);
+  const [mumsExpanded, setMumsExpanded] = React.useState(false);
+  const [rosesExpanded, setRosesExpanded] = React.useState(false);
 
   const generateAccordionCell = (item) => {
     return (
@@ -146,36 +160,51 @@ export default function GardenFlowerBreedingPage() {
         </td>
 
         <td>
-        {
-          item.result.map((r, i) => {
-            return (
-              <span>
-                <div title={r.percent} className={classes.flowerCircle} style={{background: r.color}}/>
-              </span>
-            );
-          })
-        }
+
+          <PieChart
+            style={{maxWidth: 100}}
+            data={item.result.map((r, i) => {
+              return {
+                title: r.text,
+                value: +r.percent.replace("%", ""),
+                color: r.color,
+              }
+            })}
+          />
+        
         </td>
       </tr>
     );
   }
+
+  const colors = {
+    white: "#fff",
+    red: "#f44336",
+    pink: "#e91e63",
+    purple: "#673ab7",
+    blue: "#03a9f4",
+    green: "#4caf50",
+    yellow: "#ffeb3b",
+    orange: "#ff9800",
+    black: "#212121",
+  };
 
   const tulipSectionItems = [
   {
     left: {
       image: whiteTulip,
       text: 'white',
-      color: 'white',
+      color: colors.white,
     },
     right: {
       image: redTulip,
       text: 'red',
-      color: 'red'
+      color: colors.red
     },
     result: [{
       image: pinkTulip,
       text: 'pink',
-      color: 'pink',
+      color: colors.pink,
       percent: '50%'
     }]
   },
@@ -188,12 +217,12 @@ export default function GardenFlowerBreedingPage() {
     right: {
       image: redTulip,
       text: 'red',
-      color: 'red',
+      color: colors.red,
     },
     result: [{
       image: orangeTulip,
       text: 'orange',
-      color: 'orange',
+      color: colors.orange,
       percent: '50%'
     }]
   },
@@ -201,17 +230,17 @@ export default function GardenFlowerBreedingPage() {
     left: {
       image: redTulip,
       text: 'red',
-      color: 'red',
+      color: colors.red,
     },
     right: {
       image: redTulip,
       text: 'red',
-      color: 'red',
+      color: colors.red,
     },
     result: [{
       image: blackTulip,
       text: 'black',
-      color: 'black',
+      color: colors.black,
       percent: '25%'
     }]
   },
@@ -219,80 +248,80 @@ export default function GardenFlowerBreedingPage() {
     left: {
       image: orangeTulip,
       text: 'orange',
-      color: 'orange',
+      color: colors.orange,
     },
     right: {
       image: orangeTulip,
       text: 'orange',
-      color: 'orange',
+      color: colors.orange,
     },
     result: [{
       image: orangeTulip,
       text: 'orange',
-      color: 'orange',
+      color: colors.orange,
       percent: '25%'
     },
-    {
-      image: orangeTulip,
-      text: 'Orange (Nook Mile)',
-      color: 'orange',
-      percent: '12.5%'
-    },
+    // {
+    //   image: orangeTulip,
+    //   text: 'Orange (Nook Mile)',
+    //   color: colors.orange,
+    //   percent: '12.5%'
+    // },
     {
       image: blackTulip,
       text: 'Black',
-      color: 'black',
+      color: colors.black,
       percent: '6.25%'
     },
-    {
-      image: blackTulip,
-      text: 'Black (Nook Mile)',
-      color: 'black',
-      percent: '12.5%'
-    },
+    // {
+    //   image: blackTulip,
+    //   text: 'Black (Nook Mile)',
+    //   color: colors.black,
+    //   percent: '12.5%'
+    // },
     {
       image: purpleTulip,
       text: 'purple',
-      color: 'purple',
+      color: colors.purple,
       percent: '6.25%'
     }]
   },
-  {
-    left: {
-      image: orangeTulip,
-      text: 'orange',
-      color: 'orange',
-    },
-    right: {
-      image: orangeTulip,
-      text: 'orange',
-      color: 'orange'
-    },
-    result: [{
-      image: orangeTulip,
-      text: 'Orange',
-      color: 'orange',
-      percent: '25%'
-    },
-    {
-      image: orangeTulip,
-      text: 'Orange (Nook Mile)',
-      color: 'orange',
-      percent: '25%'
-    },
-    {
-      image: blackTulip,
-      text: 'Black (Nook Mile)',
-      color: 'black',
-      percent: '12.5%'
-    },
-    {
-      image: purpleTulip,
-      text: 'Purple',
-      color: 'purple',
-      percent: '12.5%'
-    }]
-  },
+  // {
+  //   left: {
+  //     image: orangeTulip,
+  //     text: 'orange',
+  //     color: colors.orange,
+  //   },
+  //   right: {
+  //     image: orangeTulip,
+  //     text: 'orange',
+  //     color: colors.orange
+  //   },
+  //   result: [{
+  //     image: orangeTulip,
+  //     text: 'Orange',
+  //     color: colors.orange,
+  //     percent: '25%'
+  //   },
+  //   // {
+  //   //   image: orangeTulip,
+  //   //   text: 'Orange (Nook Mile)',
+  //   //   color: colors.orange,
+  //   //   percent: '25%'
+  //   // },
+  //   // // {
+  //   //   image: blackTulip,
+  //   //   text: 'Black (Nook Mile)',
+  //   //   color: colors.black,
+  //   //   percent: '12.5%'
+  //   // },
+  //   {
+  //     image: purpleTulip,
+  //     text: 'Purple',
+  //     color: colors.purple,
+  //     percent: '12.5%'
+  //   }]
+  // },
   ];
 
   const tulipSection = (
@@ -323,6 +352,68 @@ export default function GardenFlowerBreedingPage() {
     </Accordion>
   );
 
+  const lilySectionItems = [
+  {
+    left: {
+      image: whiteLily,
+      text: 'white',
+      color: colors.white,
+    },
+    right: {
+      image: redLily,
+      text: 'red',
+      color: colors.red,
+    },
+    result: [{
+      image: pinkLily,
+      text: 'pink',
+      color: colors.pink,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: yellowLily,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redLily,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: orangeLily,
+      text: 'orange',
+      color: colors.orange,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: redLily,
+      text: 'red',
+      color: colors.red
+    },
+    right: {
+      image: redLily,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: blackLily,
+      text: 'black',
+      color: colors.black,
+      percent: '25%',
+    }, {
+      image: pinkLily,
+      text: 'pink',
+      color: colors.pink,
+      percent: '25%'
+    }]
+  }
+  ];
+
   const lilySection = (
     <Accordion
       className={classes.accordion}
@@ -339,15 +430,100 @@ export default function GardenFlowerBreedingPage() {
         Lilies
         </Typography>
       </AccordionSummary>
-      <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+      <AccordionDetails>          
+        <table className={classes.table}>
+          <tbody>
+            { lilySectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
+
+  const hyacinthSectionItems = [
+  {
+    left: {
+      image: whiteHyacinth,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: whiteHyacinth,
+      text: 'white',
+      color: colors.white
+    },
+    result: [{
+      image: blueHyacinth,
+      text: 'blue',
+      color: colors.blue,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: whiteHyacinth,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: redHyacinth,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkHyacinth,
+      text: 'pink',
+      color: colors.pink,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: yellowHyacinth,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redHyacinth,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: orangeHyacinth,
+      text: 'orange',
+      color: colors.orange,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: orangeHyacinth,
+      text: 'orange',
+      color: colors.orange
+    },
+    right: {
+      image: orangeHyacinth,
+      text: 'orange',
+      color: colors.orange
+    },
+    result: [{
+      image: orangeHyacinth,
+      text: 'orange',
+      color: colors.orange,
+      percent: '25%'
+    }, {
+      image: blueHyacinth,
+      text: 'blue',
+      color: colors.blue,
+      percent: '12.5%'
+    }, {
+      image: purpleHyacinth,
+      text: 'purple',
+      color: colors.purple,
+      percent: '6.25%'
+    }]
+  },
+  ];
 
   const hyacinthSection = (
     <Accordion
@@ -366,11 +542,11 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { hyacinthSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
@@ -453,8 +629,58 @@ export default function GardenFlowerBreedingPage() {
     </Accordion>
   );
 
+  const mumSection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={mumsExpanded}
+      onChange={() => setMumsExpanded(!mumsExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteMum} width="30" height="30" />
+        </div>
+        Mums
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
 
-  const flowerBreedingAccordionSections = [tulipSection, lilySection, hyacinthSection, cosmoSection, pansySection, windflowerSection];
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+
+  const roseSection = (
+    <Accordion
+      className={classes.accordion}
+      expanded={rosesExpanded}
+      onChange={() => setRosesExpanded(!rosesExpanded)}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+      >
+        <Typography className={classes.heading}>
+        <div>
+          <img src={whiteRose} width="30" height="30" />
+        </div>
+        Roses
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography className={classes.body}>
+          
+
+          
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+  const flowerBreedingAccordionSections = [cosmoSection,hyacinthSection, lilySection, mumSection, pansySection, roseSection, tulipSection, windflowerSection];
 
   const flowerBreedingAccordion = (
     <div>
