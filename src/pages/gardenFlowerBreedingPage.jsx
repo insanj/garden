@@ -36,14 +36,41 @@ import purpleHyacinth from '../img/HU.png';
 import yellowHyacinth from '../img/HY.png';
 
 import whiteCosmo from '../img/CW.png';
+import redCosmo from '../img/CR.png';
+import pinkCosmo from '../img/CP.png';
+import orangeCosmo from '../img/CO.png';
+import blackCosmo from '../img/CK.png';
+import yellowCosmo from '../img/CY.png';
 
 import whitePansy from '../img/PW.png';
+import bluePansy from '../img/PB.png';
+import orangePansy from '../img/PO.png';
+import redPansy from '../img/PR.png';
+import purplePansy from '../img/PU.png';
 
 import whiteWindflower from '../img/WW.png';
+import blueWindflower from '../img/WB.png';
+import orangeWindflower from '../img/WO.png';
+import redWindflower from '../img/WR.png';
+import pinkWindflower from '../img/WP.png';
+import purpleWindflower from '../img/WU.png';
 
 import whiteMum from '../img/MW.png';
+import purpleMum from '../img/MU.png';
+import pinkMum from '../img/MP.png';
+import redMum from '../img/MR.png';
+import yellowMum from '../img/MY.png';
+import greenMum from '../img/MG.png';
 
 import whiteRose from '../img/RW.png';
+import purpleRose from '../img/RU.png';
+import pinkRose from '../img/RP.png';
+import redRose from '../img/RR.png';
+import yellowRose from '../img/RY.png';
+import blueRose from '../img/RB.png';
+import blackRose from '../img/RK.png';
+import goldRose from '../img/RG.png';
+import orangeRose from '../img/RO.png';
 
 import equalsSign from '../img/noun_Equal_1887594.svg';
 
@@ -139,14 +166,15 @@ export default function GardenFlowerBreedingPage() {
   const classes = useStyles();
 
   const [rootExpanded, setRootExpanded] = React.useState(true);
-  const [tulipsExpanded, setTulipsExpanded] = React.useState(false);
-  const [liliesExpanded, setLiliesExpanded] = React.useState(false);
-  const [hyacinthsExpanded, setHyacinthsExpanded] = React.useState(false);
-  const [cosmosExpanded, setCosmosExpanded] = React.useState(false);
-  const [pansysExpanded, setPansysExpanded] = React.useState(false);
-  const [windflowersExpanded, setWindflowersExpanded] = React.useState(false);
-  const [mumsExpanded, setMumsExpanded] = React.useState(false);
-  const [rosesExpanded, setRosesExpanded] = React.useState(false);
+  // const [tulipsExpanded, setTulipsExpanded] = React.useState(false);
+  // const [liliesExpanded, setLiliesExpanded] = React.useState(false);
+  // const [hyacinthsExpanded, setHyacinthsExpanded] = React.useState(false);
+  // const [cosmosExpanded, setCosmosExpanded] = React.useState(false);
+  // const [pansysExpanded, setPansysExpanded] = React.useState(false);
+  // const [windflowersExpanded, setWindflowersExpanded] = React.useState(false);
+  // const [mumsExpanded, setMumsExpanded] = React.useState(false);
+  // const [rosesExpanded, setRosesExpanded] = React.useState(false);
+  const [expandedSection, setExpandedSection] = React.useState('');
 
   const generateAccordionCell = (item) => {
     return (
@@ -187,6 +215,7 @@ export default function GardenFlowerBreedingPage() {
     yellow: "#ffeb3b",
     orange: "#ff9800",
     black: "#212121",
+    deepRed: "#b71c1c"
   };
 
   const tulipSectionItems = [
@@ -327,8 +356,8 @@ export default function GardenFlowerBreedingPage() {
   const tulipSection = (
     <Accordion
       className={classes.accordion}
-      expanded={tulipsExpanded}
-      onChange={() => setTulipsExpanded(!tulipsExpanded)}
+      expanded={expandedSection === 'tulips'}
+      onChange={() => setExpandedSection(expandedSection === 'tulips' ? '' : 'tulips')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -417,8 +446,8 @@ export default function GardenFlowerBreedingPage() {
   const lilySection = (
     <Accordion
       className={classes.accordion}
-      expanded={liliesExpanded}
-      onChange={() => setLiliesExpanded(!liliesExpanded)}
+      expanded={expandedSection === 'lilies'}
+      onChange={() => setExpandedSection(expandedSection === 'lilies' ? '' : 'lilies')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -528,8 +557,8 @@ export default function GardenFlowerBreedingPage() {
   const hyacinthSection = (
     <Accordion
       className={classes.accordion}
-      expanded={hyacinthsExpanded}
-      onChange={() => setHyacinthsExpanded(!hyacinthsExpanded)}
+      expanded={expandedSection === 'hyacinths'}
+      onChange={() => setExpandedSection(expandedSection === 'hyacinths' ? '' : 'hyacinths')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -551,11 +580,73 @@ export default function GardenFlowerBreedingPage() {
     </Accordion>
   );
 
-   const cosmoSection = (
+  const cosmoSectionItems = [
+  {
+    left: {
+      image: whiteCosmo,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: redCosmo,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkCosmo,
+      text: 'pink',
+      color: colors.pink,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: yellowCosmo,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redCosmo,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: orangeCosmo,
+      text: 'orange',
+      color: colors.orange,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: orangeCosmo,
+      text: 'orange',
+      color: colors.orange
+    },
+    right: {
+      image: orangeCosmo,
+      text: 'orange',
+      color: colors.orange
+    },
+    result: [{
+      image: pinkCosmo,
+      text: 'pink',
+      color: colors.pink,
+      percent: '15.625%'
+    }, {
+      image: blackCosmo,
+      text: 'black',
+      color: colors.black,
+      percent: '5.47%'
+    },]
+  }
+  ];
+
+  const cosmoSection = (
     <Accordion
       className={classes.accordion}
-      expanded={cosmosExpanded}
-      onChange={() => setCosmosExpanded(!cosmosExpanded)}
+      expanded={expandedSection === 'cosmos'}
+      onChange={() => setExpandedSection(expandedSection === 'cosmos' ? '' : 'cosmos')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -568,20 +659,95 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { cosmoSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
 
+  const pansySectionItems = [
+  {
+    left: {
+      image: whitePansy,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: whitePansy,
+      text: 'white',
+      color: colors.white
+    },
+    result: [{
+      image: bluePansy,
+      text: 'blue',
+      color: colors.blue,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: yellowTulip,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redPansy,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: orangePansy,
+      text: 'orange',
+      color: colors.orange,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: bluePansy,
+      text: 'blue',
+      color: colors.blue
+    },
+    right: {
+      image: redPansy,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: redPansy,
+      text: 'red',
+      color: colors.deepRed,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: redPansy,
+      text: 'red',
+      color: colors.deepRed
+    },
+    right: {
+      image: redPansy,
+      text: 'red',
+      color: colors.deepRed
+    },
+    result: [{
+      image: purplePansy,
+      text: 'purple',
+      color: colors.purple,
+      percent: '6.25%'
+    }]
+  },
+  ];
+
   const pansySection = (
     <Accordion
       className={classes.accordion}
-      expanded={pansysExpanded}
-      onChange={() => setPansysExpanded(!pansysExpanded)}
+      expanded={expandedSection === 'pansys'}
+      onChange={() => setExpandedSection(expandedSection === 'pansys' ? '' : 'pansys')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -594,20 +760,95 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { pansySectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
 
+  const windflowerSectionItems = [
+  {
+    left: {
+      image: whiteWindflower,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: whiteWindflower,
+      text: 'white',
+      color: colors.white
+    },
+    result: [{
+      image: blueWindflower,
+      text: 'blue',
+      color: colors.blue,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: orangeWindflower,
+      text: 'orange',
+      color: colors.orange
+    },
+    right: {
+      image: redWindflower,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkWindflower,
+      text: 'pink',
+      color: colors.pink,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: redWindflower,
+      text: 'red',
+      color: colors.red
+    },
+    right: {
+      image: blueWindflower,
+      text: 'blue',
+      color: colors.blue
+    },
+    result: [{
+      image: redWindflower,
+      text: 'red',
+      color: colors.deepRed,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: redWindflower,
+      text: 'red',
+      color: colors.deepRed
+    },
+    right: {
+      image: redWindflower,
+      text: 'red',
+      color: colors.deepRed
+    },
+    result: [{
+      image: purpleWindflower,
+      text: 'purple',
+      color: colors.purple,
+      percent: '6.25%'
+    }]
+  },
+  ];
+
   const windflowerSection = (
     <Accordion
       className={classes.accordion}
-      expanded={windflowersExpanded}
-      onChange={() => setWindflowersExpanded(!windflowersExpanded)}
+      expanded={expandedSection === 'windflowers'}
+      onChange={() => setExpandedSection(expandedSection === 'windflowers' ? '' : 'windflowers')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -620,20 +861,141 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { windflowerSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
 
+  const mumSectionItems = [
+  {
+    left: {
+      image: whiteMum,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: whiteMum,
+      text: 'white',
+      color: colors.white
+    },
+    result: [{
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: whiteMum,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: redMum,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkMum,
+      text: 'pink',
+      color: colors.pink,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple
+    },
+    right: {
+      image: redMum,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkMum,
+      text: 'pink',
+      color: colors.pink,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: yellowMum,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redMum,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: yellowMum,
+      text: 'yellow',
+      color: colors.yellow,
+      percent: '100%'
+    }]
+  },
+  {
+    left: {
+      image: yellowMum,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: yellowMum,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    result: [{
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple,
+      percent: '12.5%'
+    }, {
+      image: greenMum,
+      text: 'green',
+      color: colors.green,
+      percent: '6.25%'
+    }]
+  },
+  {
+    left: {
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple
+    },
+    right: {
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple
+    },
+    result: [{
+      image: purpleMum,
+      text: 'purple',
+      color: colors.purple,
+      percent: '50%'
+    }, {
+      image: greenMum,
+      text: 'green',
+      color: colors.green,
+      percent: '25%'
+    }]
+  }
+  ];
+
   const mumSection = (
     <Accordion
       className={classes.accordion}
-      expanded={mumsExpanded}
-      onChange={() => setMumsExpanded(!mumsExpanded)}
+      expanded={expandedSection === 'mums'}
+      onChange={() => setExpandedSection(expandedSection === 'mums' ? '' : 'mums')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -646,20 +1008,154 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { mumSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
 
+  const roseSectionItems = [
+  {
+    left: {
+      image: whiteRose,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: whiteRose,
+      text: 'white',
+      color: colors.white
+    },
+    result: [{
+      image: purpleRose,
+      text: 'purple',
+      color: colors.purple,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: whiteRose,
+      text: 'white',
+      color: colors.white
+    },
+    right: {
+      image: redRose,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkRose,
+      text: 'pink',
+      color: colors.pink,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: yellowRose,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    right: {
+      image: redRose,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: orangeRose,
+      text: 'orange',
+      color: colors.orange,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: redRose,
+      text: 'red',
+      color: colors.red
+    },
+    right: {
+      image: redRose,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: blackRose,
+      text: 'black',
+      color: colors.black,
+      percent: '25%'
+    }, {
+      image: pinkRose,
+      text: 'pink',
+      color: colors.pink,
+      percent: '25%'
+    }]
+  },
+  {
+    left: {
+      image: purpleRose,
+      text: 'purple',
+      color: colors.purple
+    },
+    right: {
+      image: redRose,
+      text: 'red',
+      color: colors.red
+    },
+    result: [{
+      image: pinkRose,
+      text: 'pink',
+      color: colors.pink,
+      percent: '50%'
+    }]
+  },
+  {
+    left: {
+      image: pinkRose,
+      text: 'pink',
+      color: colors.pink
+    },
+    right: {
+      image: yellowRose,
+      text: 'yellow',
+      color: colors.yellow
+    },
+    result: [{
+      image: redRose,
+      text: 'red',
+      color: colors.deepRed,
+      percent: '12.5%'
+    }]
+  },
+  {
+    left: {
+      image: redRose,
+      text: 'red',
+      color: colors.deepRed
+    },
+    right: {
+      image: redRose,
+      text: 'red',
+      color: colors.deepRed
+    },
+    result: [{
+      image: blueRose,
+      text: 'blue',
+      color: colors.blue,
+      percent: '1.56%'
+    }]
+  },
+  ];
+
   const roseSection = (
     <Accordion
       className={classes.accordion}
-      expanded={rosesExpanded}
-      onChange={() => setRosesExpanded(!rosesExpanded)}
+      expanded={expandedSection === 'roses'}
+      onChange={() => setExpandedSection(expandedSection === 'roses' ? '' : 'roses')}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -672,14 +1168,15 @@ export default function GardenFlowerBreedingPage() {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography className={classes.body}>
-          
-
-          
-        </Typography>
+        <table className={classes.table}>
+          <tbody>
+            { roseSectionItems.map(i => generateAccordionCell(i)) }
+          </tbody>
+        </table>
       </AccordionDetails>
     </Accordion>
   );
+
   const flowerBreedingAccordionSections = [cosmoSection,hyacinthSection, lilySection, mumSection, pansySection, roseSection, tulipSection, windflowerSection];
 
   const flowerBreedingAccordion = (
