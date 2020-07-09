@@ -3,7 +3,7 @@ VERSION := "$(shell git describe --tags --abbrev=0)"
 TAG ?= $(VERSION)
 IP_ADDRESS := $(shell ipconfig getifaddr en0)
 
-PUBLIC_URL=http://insanj.github.io/garden/
+PUBLIC_URL=http://gardenguide.fun
 LOCAL_URL=http://$(IP_ADDRESS):8080
 
 .PHONY: serve
@@ -16,7 +16,7 @@ build: env
 	npm run build
 	rm -r -f docs
 	mv build docs
-# 	echo "$(PUBLIC_URL)" > docs/CNAME
+	echo "$(PUBLIC_URL)" > docs/CNAME
 
 .PHONY: env
 env: export REACT_APP_GARDEN_TAG=$(TAG)
