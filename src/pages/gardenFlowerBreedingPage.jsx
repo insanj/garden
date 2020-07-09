@@ -6,6 +6,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import AddIcon from '@material-ui/icons/Add';
+
 import book from '../img/Book.png';
 
 import whiteLily from '../img/LW.png';
@@ -22,6 +24,8 @@ import yellowTulip from '../img/TY.png';
 import orangeTulip from '../img/TO.png';
 import blackTulip from '../img/TK.png';
 import purpleTulip from '../img/TU.png';
+
+import equalsSign from '../img/noun_Equal_1887594.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   accordionTypography: {
     width: '100%'
   },
+  flowerEquation: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '140px',
+  },
   flowerIcon: {
     width: 22,
     height: 22,
@@ -53,11 +62,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 5,
     marginRight: 5,
   },
+  flowerCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    display: 'inline-block'
+  },
+  flowerEquals: {
+    width: 12,
+    height: 12,
+    marginBottom: 6,
+  },
   accordion: {
     background: 'rgba(50,50,50,1)',
     color: "#fff"
   },
   body: {
+    width: '100%',
     fontSize: theme.typography.pxToRem(19),
   }
 }));
@@ -71,23 +92,21 @@ export default function GardenFlowerBreedingPage() {
 
   const generateAccordionCell = (item) => {
     return (
-      <div>
-        <img src={ item.imageOne } className={classes.flowerIcon} /> 
-        <span style={{margin: 5}}>+</span>
-        <img src={ item.imageTwo } className={classes.flowerIcon} /> 
-        <span style={{margin: 5}}>=</span>
+      <div className={classes.flowerEquation}>
+        <div className={classes.flowerCircle} style={{background: item.left.color}}/> 
+        <span style={{margin: 5}}>
+          <AddIcon/>
+        </span>
+        <div className={classes.flowerCircle} style={{background: item.right.color}}/> 
+        <span style={{margin: 10}}>
+          <img src={equalsSign} className={classes.flowerEquals} />
+        </span>
 
         {
           item.result.map((r, i) => {
             return (
               <span>
-                <img src={ r.image } className={classes.flowerIcon} /> 
-
-                <sup><span className={classes.flowerPercent}>
-                  {r.percent}
-                </span></sup>
-
-                { i < item.result.length-1 ? 'or' : ''}
+                <div title={r.percent} className={classes.flowerCircle} style={{background: r.color}}/>
               </span>
             );
           })
@@ -99,95 +118,102 @@ export default function GardenFlowerBreedingPage() {
 
   const tulipSectionItems = [
   {
-    imageOne: whiteTulip,
-    textOne: 'White',
-    imageTwo: redTulip,
-    textTwo: 'Red',
+    left: {
+      image: whiteTulip,
+      text: 'white',
+      color: 'white',
+    },
+    right: {
+      image: redTulip,
+      text: 'red',
+      color: 'red'
+    },
     result: [{
       image: pinkTulip,
-      text: 'Pink',
+      text: 'pink',
+      color: 'pink',
       percent: '50%'
     }]
   },
-  {
-    imageOne: yellowTulip,
-    textOne: 'Yellow',
-    imageTwo: redTulip,
-    textTwo: 'Red',
-    result: [{
-      image: orangeTulip,
-      text: 'Orange',
-      percent: '50%'
-    }]
-  },
-  {
-    imageOne: redTulip,
-    textOne: 'Red',
-    imageTwo: redTulip,
-    textTwo: 'Red',
-    result: [{
-      image: blackTulip,
-      text: 'Black',
-      percent: '25%'
-    }]
-  },
-  {
-    imageOne: orangeTulip,
-    textOne: 'Orange',
-    imageTwo: orangeTulip,
-    textTwo: 'Orange',
-    result: [{
-      image: orangeTulip,
-      text: 'Orange',
-      percent: '25%'
-    },
-    {
-      image: orangeTulip,
-      text: 'Orange (Nook Mile)',
-      percent: '12.5%'
-    },
-    {
-      image: blackTulip,
-      text: 'Black',
-      percent: '6.25%'
-    },
-    {
-      image: blackTulip,
-      text: 'Black (Nook Mile)',
-      percent: '12.5%'
-    },
-    {
-      image: purpleTulip,
-      text: 'Purple',
-      percent: '6.25%'
-    }]
-  },
-    {
-    imageOne: orangeTulip,
-    textOne: 'Orange',
-    imageTwo: orangeTulip,
-    textTwo: 'Orange',
-    result: [{
-      image: orangeTulip,
-      text: 'Orange',
-      percent: '25%'
-    },
-    {
-      image: orangeTulip,
-      text: 'Orange (Nook Mile)',
-      percent: '25%'
-    },
-    {
-      image: blackTulip,
-      text: 'Black (Nook Mile)',
-      percent: '12.5%'
-    },
-    {
-      image: purpleTulip,
-      text: 'Purple',
-      percent: '12.5%'
-    }]
-  },
+  // {
+  //   imageOne: yellowTulip,
+  //   textOne: 'Yellow',
+  //   imageTwo: redTulip,
+  //   textTwo: 'Red',
+  //   result: [{
+  //     image: orangeTulip,
+  //     text: 'Orange',
+  //     percent: '50%'
+  //   }]
+  // },
+  // {
+  //   imageOne: redTulip,
+  //   textOne: 'Red',
+  //   imageTwo: redTulip,
+  //   textTwo: 'Red',
+  //   result: [{
+  //     image: blackTulip,
+  //     text: 'Black',
+  //     percent: '25%'
+  //   }]
+  // },
+  // {
+  //   imageOne: orangeTulip,
+  //   textOne: 'Orange',
+  //   imageTwo: orangeTulip,
+  //   textTwo: 'Orange',
+  //   result: [{
+  //     image: orangeTulip,
+  //     text: 'Orange',
+  //     percent: '25%'
+  //   },
+  //   {
+  //     image: orangeTulip,
+  //     text: 'Orange (Nook Mile)',
+  //     percent: '12.5%'
+  //   },
+  //   {
+  //     image: blackTulip,
+  //     text: 'Black',
+  //     percent: '6.25%'
+  //   },
+  //   {
+  //     image: blackTulip,
+  //     text: 'Black (Nook Mile)',
+  //     percent: '12.5%'
+  //   },
+  //   {
+  //     image: purpleTulip,
+  //     text: 'Purple',
+  //     percent: '6.25%'
+  //   }]
+  // },
+  //   {
+  //   imageOne: orangeTulip,
+  //   textOne: 'Orange',
+  //   imageTwo: orangeTulip,
+  //   textTwo: 'Orange',
+  //   result: [{
+  //     image: orangeTulip,
+  //     text: 'Orange',
+  //     percent: '25%'
+  //   },
+  //   {
+  //     image: orangeTulip,
+  //     text: 'Orange (Nook Mile)',
+  //     percent: '25%'
+  //   },
+  //   {
+  //     image: blackTulip,
+  //     text: 'Black (Nook Mile)',
+  //     percent: '12.5%'
+  //   },
+  //   {
+  //     image: purpleTulip,
+  //     text: 'Purple',
+  //     percent: '12.5%'
+  //   }]
+  // },
   ];
 
   const tulipSection = (
@@ -225,60 +251,14 @@ export default function GardenFlowerBreedingPage() {
       <AccordionDetails>
         <Typography className={classes.body}>
           
-          <div>
-            <img src={ whiteLily } className={classes.flowerIcon} /> 
-            White + 
-            <img src={ redLily } className={classes.flowerIcon} /> 
-            Red 
-            = 
-            <img src={ pinkLily } className={classes.flowerIcon} /> 
-            Pink 
 
-            <sup><span className={classes.flowerPercent}>
-              50%
-            </span></sup>
-          </div>
           
-          <div>
-            <img src={ yellowLily } className={classes.flowerIcon} /> 
-            Yellow + 
-            <img src={ redLily } className={classes.flowerIcon} /> 
-            Red 
-            = 
-            <img src={ orangeLily } className={classes.flowerIcon} /> 
-            Orange 
-            <sup><span className={classes.flowerPercent}>
-              50%
-            </span></sup>
-          </div>
-
-          <div>
-            <img src={ redLily } className={classes.flowerIcon} /> 
-            White + 
-            <img src={ redLily } className={classes.flowerIcon} /> 
-            Red 
-            = 
-            <img src={ blackLily } className={classes.flowerIcon} /> 
-            Black
-            <sup><span className={classes.flowerPercent}>
-              25%
-            </span></sup>
-
-            or 
-
-            <img src={ pinkLily } className={classes.flowerIcon} /> 
-            Pink 
-
-            <sup><span className={classes.flowerPercent}>
-              25%
-            </span></sup>
-          </div>
         </Typography>
       </AccordionDetails>
     </Accordion>
   );
 
-  const flowerBreedingAccordionSections = [lilySection, tulipSection];
+  const flowerBreedingAccordionSections = [tulipSection];
 
   const flowerBreedingAccordion = (
     <div>
