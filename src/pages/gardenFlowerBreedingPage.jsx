@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     fontWeight: 600,
     lineHeight: 1.1,
+    color: '#fff'
   },
   headingAuthor: {
     fontSize: theme.typography.pxToRem(15),
@@ -51,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.6,
     marginLeft: 5,
     marginRight: 5,
+  },
+  accordion: {
+    background: 'rgba(50,50,50,1)',
+    color: "#fff"
   },
   body: {
     fontSize: theme.typography.pxToRem(19),
@@ -187,6 +192,7 @@ export default function GardenFlowerBreedingPage() {
 
   const tulipSection = (
     <Accordion
+      className={classes.accordion}
       expanded={tulipsExpanded}
       onChange={() => setTulipsExpanded(!tulipsExpanded)}
     >
@@ -207,6 +213,7 @@ export default function GardenFlowerBreedingPage() {
 
   const lilySection = (
     <Accordion
+      className={classes.accordion}
       expanded={liliesExpanded}
       onChange={() => setLiliesExpanded(!liliesExpanded)}
     >
@@ -281,7 +288,7 @@ export default function GardenFlowerBreedingPage() {
 
   const rootAccordion = (
     <Accordion
-      style={{background: 'rgba(255,255,255,0.8)'}}
+      style={{background: 'rgba(0,0,0,0.3)', borderRadius: 20, boxShadow: '0px 2px 2px rgba(0,0,0,0.2)'}}
       expanded={rootExpanded}
       onChange={() => setRootExpanded(!rootExpanded)}
     >
