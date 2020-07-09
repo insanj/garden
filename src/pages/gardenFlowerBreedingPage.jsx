@@ -47,6 +47,7 @@ import bluePansy from '../img/PB.png';
 import orangePansy from '../img/PO.png';
 import redPansy from '../img/PR.png';
 import purplePansy from '../img/PU.png';
+import yellowPansy from '../img/PY.png';
 
 import whiteWindflower from '../img/WW.png';
 import blueWindflower from '../img/WB.png';
@@ -193,7 +194,7 @@ export default function GardenFlowerBreedingPage() {
             style={{maxWidth: 100}}
             data={item.result.map((r, i) => {
               return {
-                title: r.text,
+                title: `${r.text}, ${r.percent}`,
                 value: +r.percent.replace("%", ""),
                 color: r.color,
               }
@@ -206,16 +207,16 @@ export default function GardenFlowerBreedingPage() {
   }
 
   const colors = {
-    white: "#fff",
-    red: "#f44336",
-    pink: "#e91e63",
-    purple: "#673ab7",
-    blue: "#03a9f4",
-    green: "#4caf50",
-    yellow: "#ffeb3b",
-    orange: "#ff9800",
-    black: "#212121",
-    deepRed: "#b71c1c"
+    white: "#F7F4E7",
+    red: "#EE4343",
+    pink: "#FF8BD3",
+    purple: "#9940ff",
+    blue: "#4E4AFA",
+    green: "#c5e800",
+    yellow: "#ffe600",
+    orange: "#FD9B05",
+    black: "#220b0c",
+    deepRed: "#EE4343"
   };
 
   const tulipSectionItems = [
@@ -447,7 +448,7 @@ export default function GardenFlowerBreedingPage() {
     <Accordion
       className={classes.accordion}
       expanded={expandedSection === 'lilies'}
-      onChange={() => setExpandedSection(expandedSection === 'lilies' ? '' : 'lilies')}
+      onChange={() => setExpandedSection(expandedSection === 'lilies' ? '' : 'lilies', () => window.scrollTo(0))}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -689,7 +690,7 @@ export default function GardenFlowerBreedingPage() {
   },
   {
     left: {
-      image: yellowTulip,
+      image: yellowPansy,
       text: 'yellow',
       color: colors.yellow
     },
