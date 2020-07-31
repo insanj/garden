@@ -3,8 +3,8 @@
 
  💐 animal crossing flower guide [http://gardenguide.fun](http://gardenguide.fun)
  
-<img src="Screen_Shot_2020-07-09_at_5.31.47_PM.png" width="300" align="left" />
-<img src="Screen_Shot_2020-07-09_at_5.31.40_PM.png" width="300" align="left" />
+<img src="Screen_Shot_2020-07-09_at_5.31.47_PM.png" width="400" align="left" />
+<img src="Screen_Shot_2020-07-09_at_5.31.40_PM.png" width="400" align="left" />
 
 ## attribution
  
