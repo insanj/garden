@@ -1,9 +1,12 @@
 # garden
 
-💐 animal crossing flower guide [https://insanj.github.io/garden/](https://insanj.github.io/garden/)
+💐 animal crossing flower guide [https://insanj.github.io/garden/](https://insanj.github.io/garden/) (previously known as `garden.guide`)
 
-<img src="Screen_Shot_2020-07-09_at_5.31.47_PM.png" width="400" align="left" />
-<img src="Screen_Shot_2020-07-09_at_5.31.40_PM.png" width="400" align="left" />
+<p align="center">
+<img src="Screen_Shot_2020-07-09_at_5.31.47_PM.png" width="30%" />
+<img src="Screen_Shot_2020-07-09_at_5.31.40_PM.png" width="30%" />
+</p>
+
 
 ## install
 
