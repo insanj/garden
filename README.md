@@ -1,26 +1,31 @@
-
 # garden
 
- 💐 animal crossing flower guide [http://gardenguide.fun](http://gardenguide.fun)
- 
+💐 animal crossing flower guide [https://insanj.github.io/garden/](https://insanj.github.io/garden/)
+
 <img src="Screen_Shot_2020-07-09_at_5.31.47_PM.png" width="400" align="left" />
 <img src="Screen_Shot_2020-07-09_at_5.31.40_PM.png" width="400" align="left" />
 
+## install
+
+1. `npm install`
+2. Edit the `Makefile` to contain the remote URL you'd like to use
+3. `make build`
+
 ## attribution
- 
+
 important data for garden was pulled from the following source: [https://aiterusawato.github.io/satogu/acnh/flowers/](https://aiterusawato.github.io/satogu/acnh/flowers/)
- 
- ## authors
- 
- ```
- julian weiss
- github.com/insanj
- ```
- 
- ## [license](LICENSE)
-  
- ```
- MIT License
+
+## authors
+
+```
+julian weiss
+github.com/insanj
+```
+
+## [license](LICENSE)
+
+```
+MIT License
 
 Copyright (c) 2020 Julian Weiss
 

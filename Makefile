@@ -3,7 +3,7 @@ VERSION := "$(shell git describe --tags --abbrev=0)"
 TAG ?= $(VERSION)
 IP_ADDRESS := $(shell ipconfig getifaddr en0)
 
-PUBLIC_URL=http://gardenguide.fun
+PUBLIC_URL=https://insanj.github.io/garden
 LOCAL_URL=http://$(IP_ADDRESS):8080
 
 .PHONY: serve
